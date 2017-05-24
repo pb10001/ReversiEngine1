@@ -21,7 +21,10 @@ namespace ReversiEngine1
                 return "100万局面読む";
             }
         }
-
+        public int GetEval()
+        {
+            return eval;
+        }
         public void SetTimeLimit(int milliSecond)
         {
             throw new NotImplementedException();
@@ -45,13 +48,14 @@ namespace ReversiEngine1
         int depthForBroad;
         ////探索の広さ
         int breadthForBroad;
+        int eval;
         private void Init()
         {
             depthForDeep = 60;
             breadthForDeep = 1;
 
-            depthForBroad = 5;
-            breadthForBroad = 10;
+            depthForBroad = 6;
+            breadthForBroad = 6;
             moveMap = new Dictionary<ReversiBoard, ReversiMove>();
         }
         public async Task<ReversiMove> Think(ReversiBoard board, StoneType player)
@@ -94,12 +98,14 @@ namespace ReversiEngine1
             if (player == StoneType.Sente)
             {
                 var best = evalMap.Values.Max();
+                eval = best;
                 Init();
                 return evalMap.Keys.First(x => evalMap[x] == best);
             }
             else
             {
                 var best = evalMap.Values.Min();
+                eval = best;
                 Init();
                 return evalMap.Keys.First(x => evalMap[x] == best);
             }

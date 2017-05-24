@@ -13,7 +13,7 @@ namespace ReversiEngine1
     {
         public Eval()
         {
-            FromParamsString("89,7,-56,56,-10,-88,-73,18,-28,-98,24,-5,65,-100,-4,-21");
+            FromParamsString("85,-28,49,-5,73,-48,-40,-42,68,-9,92,-17,-48,-84,-89,26");
         }
         public void FromParamsString(string paramsString)
         {
